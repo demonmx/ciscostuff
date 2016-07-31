@@ -9,7 +9,7 @@
 # its assumed that every box uses the same account and pass and the "en" pass is the same as mypass
 #
 # you can modify the "expect" script stating the relevant "expect" & "send" pairs on add_expect_pairs function
-# (check the main subroutine you will get it if analize it.)
+# (check the main subroutine you will get it if you analize it.)
 #
 # This script was created (and executed) on os x and you must be able to run it on any modern linux/osx box
 # for windows... grow up and install linux .. 
