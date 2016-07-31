@@ -11,6 +11,9 @@
 # you can modify the "expect" script stating the relevant "expect" & "send" pairs on add_expect_pairs function
 # (check the main subroutine you will get it if analize it.)
 #
+# This script was created (and executed) on os x and you must be able to run it on any modern linux/osx box
+# for windows... grow up and install linux .. 
+#
 # Adrian de los Santos
 # demon@demon.com.mx
 
