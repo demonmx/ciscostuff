@@ -8,7 +8,8 @@
 # you need to define the account & mypass variables
 # its assumed that every box uses the same account and pass and the "en" pass is the same as mypass
 #
-# you can modify the "exect" script stating the relevant "expect" & "send" pairs on add_expect_pairs function
+# you can modify the "expect" script stating the relevant "expect" & "send" pairs on add_expect_pairs function
+# (check the main subroutine you will get it if analize it.)
 #
 # Adrian de los Santos
 # demon@demon.com.mx
