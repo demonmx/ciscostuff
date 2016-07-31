@@ -2,8 +2,9 @@
 #
 # this code extract the configuration of all context's on an asa box
 # stores the config as <ip>_<context>.conf 
-# it uses a table called "firewallcitos" (yea i know, dummy name) where you define the ip's of the 
+# it uses a table called "firewallcitos" (yea i know, dumb list name) where you define the ip's of the 
 # physical asa boxes.
+#
 # you need to define the account & mypass variables
 # its assumed that every box uses the same account and pass and the "en" pass is the same as mypass
 #
@@ -31,8 +32,6 @@ def add_expect_pairs(expect_part, send_part):
 
 def grab_config(destination_ip, commands_list, description):
 	sw_abort=0
-
-
 	composer="ssh " + account + "@" + destination_ip
 	child = pexpect.spawn(composer)
 	fp = open("fw_" + destination_ip + "_" + description + ".conf","w")
@@ -57,7 +56,6 @@ def grab_config(destination_ip, commands_list, description):
 		child.sendcontrol("c")
 		sw_abort=1
 
-
 	if sw_abort == 1:
 		print "aborted"
 
@@ -66,11 +64,9 @@ def grab_config(destination_ip, commands_list, description):
 
 	counter=0;
 	for dict in commands_list:
-
   		kind=dict['type']
 		cmd=dict['command']
 		counter += 1
-
 		if kind == "expect":
 			child.expect(cmd)
 		elif kind == "sendline":
@@ -98,7 +94,6 @@ def main(get_config_ip):
 
 	# open the main file an loop thru contexts
 	full_config_file=open(get_config_ip + "_main.conf","r").read()
-
 	lines_config_file=full_config_file.split('\n')
 
 	context_list=[]
