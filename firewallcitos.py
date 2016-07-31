@@ -30,23 +30,15 @@ def add_expect_pairs(expect_part, send_part):
 	commands_list.append(command_dict)
 
 def grab_config(destination_ip, commands_list, description):
-	#description="main"
-	#destination_ip="10.55.33.136"
-	#account="cayala"
-	#mypass="l0m15m0"
 	sw_abort=0
 
-	#print " ---- GETTING IP :"  + destination_ip + " --------"
 
 	composer="ssh " + account + "@" + destination_ip
-	#print "spawing " + composer
 	child = pexpect.spawn(composer)
-	#child.logfile = sys.stdout
 	fp = open("fw_" + destination_ip + "_" + description + ".conf","w")
 
 	returnval = child.expect (["Are you sure you want to continue connecting","password",pexpect.EOF,pexpect.TIMEOUT])
-	#print child.before
-	#print child.after 
+
 	if returnval == 0:
 		#RSA key message presented for SSH
 		child.sendline ("yes")
@@ -56,8 +48,6 @@ def grab_config(destination_ip, commands_list, description):
 		#There is no RSA key presented to SSH
 		#child.expect ("ssword:")
 		child.sendline (mypass+"\n")
-		#print child.after 
-		#print child.before
 	elif returnval == 2:
 		print ("\nEOF - Cannot connect to host " + destination_ip)
 		child.sendcontrol("c")
@@ -80,11 +70,6 @@ def grab_config(destination_ip, commands_list, description):
   		kind=dict['type']
 		cmd=dict['command']
 		counter += 1
-
-		#print "kind: " + kind + "value " + ">" + cmd + "<<<<<<<<<"
-
-		#if (commands_size - 1 ) == counter:
-		#	fp.write(child.before)
 
 		if kind == "expect":
 			child.expect(cmd)
@@ -141,13 +126,10 @@ def main(get_config_ip):
 
 
 # la la la la main stuff here
-
 firewallcitos=[ "192.168.1.1", 
-		        "192.168.10.1",
-	            "192.168.10.2"]
+		"192.168.10.1",
+	        "192.168.10.2"]
 
 for firewallcito in firewallcitos:
 	main(firewallcito)
-
-
 
